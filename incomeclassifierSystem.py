@@ -276,6 +276,27 @@ Misclassified_Sample = []
      
  print(Misclassified_Sample)
  
+  
+  # Since for i=10 the misclassified samples are less lets try to put neigbors =10
+ 
+ #Store the KNN classifier
+KNN_classifier = KNeighborsClassifier(n_neighbors = 10)
+
+#Fitting the values of x and y
+KNN_classifier.fit(train_x, train_y)
+#Predicting the test variables with model
+prediction=KNN_classifier.predict(test_x)
+
+#performance matrix check
+confusion_matrix = confusion_matrix(test_y, prediction)
+print("\t","Predicted values")
+print("original values","\n",confusion_matrix)
+accuracy_score=accuracy_score(test_y, prediction)
+print(accuracy_score)
+
+#Printing the misclassified values from prediction
+print('Misclassified samples: %d' %(test_y != prediction).sum())
+
  
  
  
